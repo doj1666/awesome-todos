@@ -11,7 +11,8 @@ const connectToMongoDB = async () => {
       client = await MongoClient.connect(uri);
       console.log("Connected to MongoDB");
     } catch (error) {
-      console.log(error);
+      console.error("MongoDB connection failed:", error);
+      throw error;  // Fail server startup if no DB
     }
   }
   return client;

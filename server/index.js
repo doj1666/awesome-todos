@@ -6,6 +6,12 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 
+const cors = require("cors");
+app.use(cors({
+  origin: ["http://localhost:5173", "http://localhost:5000"],  // Vite dev + prod
+  credentials: true
+}));
+
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
