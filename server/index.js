@@ -2,13 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const { connectToMongoDB } = require("./database");
 const path = require('path');
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
 
-const cors = require("cors");
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5000"],  // Vite dev + prod
+  origin: [
+    "http://localhost:5173", 
+    "http://localhost:5000",
+    "https://awesome-todos-nzoy.onrender.com"
+  ],
   credentials: true
 }));
 
