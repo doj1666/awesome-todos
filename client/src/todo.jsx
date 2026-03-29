@@ -10,7 +10,7 @@ export default function Todo(props) {
     });
     const json = await res.json();
 
-    if (json.acknowledged) {
+    if (json.success) {
       props.setTodos(currentTodos => 
         currentTodos.map(todo => 
           todo._id === todoId 
@@ -27,7 +27,7 @@ export default function Todo(props) {
     });
     const json = await res.json();
     
-    if (json.acknowledged) {
+    if (json.success) {
       props.setTodos(currentTodos => {
         return currentTodos
           .filter((currentTodo) => (currentTodo._id !== todoId));
